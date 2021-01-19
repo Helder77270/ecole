@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="person" class="com.example.demo.Person">
+        <constructor-arg value="name" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="firstname" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="login" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="password" type="java.lang.String"></constructor-arg>
+    </bean>
+
+    <bean id="parent" class="com.example.demo.Parent">
+        <constructor-arg value="name" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="firstname" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="login" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="password" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="email" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="phone_number" type="java.lang.String"></constructor-arg>
+    </bean>
+
+    <bean id="student" class="com.example.demo.Student">
+        <constructor-arg value="name" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="firstname" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="login" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="password" type="java.lang.String"></constructor-arg>
+    </bean>
+
+    <bean id="teacher" class="com.example.demo.Teacher">
+        <constructor-arg value="name" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="firstname" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="login" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="password" type="java.lang.String"></constructor-arg>
+    </bean>
+
+    <bean id="chat" class="com.example.demo.Chat">
+        <constructor-arg value="content" type="java.lang.String"></constructor-arg>
+    </bean>
+
+    <bean id="class" class="com.example.demo.Class">
+        <constructor-arg value="1" type="java.lang.Integer"></constructor-arg>
+        <constructor-arg value="name" type="com.example.demo.Teacher"></constructor-arg>
+        <constructor-arg value="name" type="java.util.ArrayList"></constructor-arg>
+    </bean>
+
+    <bean id="link" class="com.example.demo.Link">
+        <constructor-arg value="text" type="java.lang.String"></constructor-arg>
+    </bean>
+
+    <bean id="document" class="com.example.demo.Document">
+        <constructor-arg value="content" type="java.lang.String"></constructor-arg>
+    </bean>
+
+    <bean id="homework" class="com.example.demo.Homework">
+        <constructor-arg value="text" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="date" type="java.util.Date"></constructor-arg>
+        <constructor-arg value="documents" type="java.util.ArrayList"></constructor-arg>
+        <constructor-arg value="links" type="java.util.ArrayList"></constructor-arg>
+    </bean>
+</beans>

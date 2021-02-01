@@ -6,10 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class Main {
@@ -43,7 +41,14 @@ public class Main {
 
 
             Teacher t = new Teacher("Salvador","Helder","Heldou77", "Lebgdu77RPZ!!");
+<<<<<<< Updated upstream
             String query = "INSERT INTO `teacher`(`id_teacher`, `firstname`, `lastname`, `login`, `password`) VALUES (null, ?, ?,?,?) ";
+=======
+
+            String query = "INSERT INTO `teacher`" +
+                    "(`firstname`, `lastname`, `login`, `password`) " +
+                    "VALUES (?, ?,?,?) ";
+>>>>>>> Stashed changes
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = co.prepareStatement(query);
@@ -52,6 +57,44 @@ public class Main {
             preparedStmt.setString (3, t.getLogin());
             preparedStmt.setString (4, t.getPassword());
             preparedStmt.execute();
+
+           String query1 = "UPDATE teacher SET firstname = ?, lastname = ?, login = ?, password = ? WHERE id_teacher = ?";
+
+            preparedStmt = co.prepareStatement(query1);
+            // create the mysql insert preparedstatement
+           // PreparedStatement preparedStmt1 = co.prepareStatement(query);
+
+            preparedStmt.setString (1, "Sid-Ahmed");
+            preparedStmt.setString (2, "MIR");
+            preparedStmt.setString (3,"mirlogin");
+            preparedStmt.setString (4,"mirpwd");
+            preparedStmt.setInt (5,1);
+            preparedStmt.executeUpdate();
+
+            String query2 = "DELETE FROM teacher WHERE id_teacher = ?";
+
+            preparedStmt = co.prepareStatement(query2);
+            // create the mysql insert preparedstatement
+           // PreparedStatement preparedStmt1 = co.prepareStatement(query);
+
+            preparedStmt.setInt (1,1);
+            preparedStmt.execute();
+
+           ResultSet res = stmt.executeQuery("select * from teacher");
+            ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+            while(res.next()){
+                teachers.add
+                        (new Teacher(
+                                res.getInt("id_teacher"),
+                                res.getString("firstname"),
+                                res.getString("lastname"),
+                                res.getString("login"),
+                                res.getString("password")
+                                )
+                        );
+
+            }
+            System.out.println(teachers);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -2,9 +2,7 @@ package com.example.demo;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -23,7 +21,6 @@ public class Main {
         Resource r = new ClassPathResource("applicationContext.xml");
         BeanFactory fac = new XmlBeanFactory(r);
 
-
         Person person = (Person) fac.getBean("person");
         Parent parent = (Parent) fac.getBean("parent");
         Student student = (Student) fac.getBean("student");
@@ -33,7 +30,7 @@ public class Main {
         Link link = (Link) fac.getBean("link");
 
         Document document = (Document) fac.getBean("document");
-        Homework homework = (Homework) fac.getBean("homework");
+       // Homework homework = (Homework) fac.getBean("homework");
 
         java.lang.Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -46,14 +43,14 @@ public class Main {
 
 
             Teacher t = new Teacher("Salvador","Helder","Heldou77", "Lebgdu77RPZ!!");
-            String query = "INSERT INTO `teacher`(`id`, `firstname`, `lastname`, `login`, `password`) VALUES (null, ?, ?,?) ";
+            //  String query = "INSERT INTO `teacher`(`id_teacher`, `firstname`, `lastname`, `login`, `password`) VALUES (null, ?, ?,?,?) ";
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = co.prepareStatement(query);
             preparedStmt.setString (1, t.getFirstname());
             preparedStmt.setString (2, t.getName());
             preparedStmt.setString (3, t.getLogin());
-            preparedStmt.setString (3, t.getPassword());
+            preparedStmt.setString (4, t.getPassword());
             preparedStmt.execute();
         } catch (Exception e) {
             e.printStackTrace();
